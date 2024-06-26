@@ -1,0 +1,11 @@
+<h1>New Booking</h1>
+<%= simple_form_for [@flat, @booking] do |f| %>
+<%# date_picker %>
+
+  <%= f.input :check_in, as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+  <%= f.input :check_out, as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+  <%= f.input :nb_people, as: :integer %>
+  <%= f.button :submit %>
+<% end %>
