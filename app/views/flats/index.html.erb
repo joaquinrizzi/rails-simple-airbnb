@@ -1,0 +1,54 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col">
+      <div class="mb-3">
+        <h1>All our Flats (<%=@flats.size%> )</h1>
+      </div>
+    </div>
+  </div>
+  <%# <div class="row row-cols-4 row-cols-md-3 g-4"> %>
+  <%# <div class="row"> %>
+    <div class="row row-cols-md-2 row-cols-lg-3 g-4 card-group">
+      <% @flats.each do |flat|%>
+      <div class="col">
+        <div class="card shadow p-3 mb-5 bg-body-tertiary rounded h-100">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-12">
+                <h5 class="card-title"><%= flat.name%></h5>
+                <p class="card-text"><%= flat.address%></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <i class="fa fa-group"></i>
+                <small><%= flat.number_of_guests%></small>
+              </div>
+              <div class="col-lg-6 text-end" >
+                <i class='fas fa-euro-sign'></i>
+                <small><%= flat.price_per_night%></small>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent">
+            <div class="row">
+              <div class="col-lg-6">
+                <small class="text-body-secondary">
+                  <%= link_to "More info", flat_path(flat)%>
+                </small>
+              </div>
+              <div class="col-lg-6 text-end">
+                <small class="text-body-secondary">
+                  <%= link_to flat_path(flat), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                    <i class="fa-solid fa-trash"></i>
+                  <%end%>
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%end%>
+    </div>
+  <%# </div> %>
+</div>
